@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>个人简历</title>
+</head>
+<body>
+<div class="container">
+    <div class="leftSide">
+        <div class="profile">
+            <img th:src="@{../static/image/{filename}(filename=${filename})}" alt="personal pic">
+            <p style="color: white">页面访问量为: [[${hitsCount}]]</p>
+            <h2>杨凯楠
+                <span>Valverde </span><br>
+            </h2>
+
+        </div>
+
+        <div class="contactInfo">
+            <h3 class="title">联系方式</h3>
+            <ul>
+                <li>
+                        <span class="material-icons">
+                            call
+                        </span>
+                    <span class="text">18234425930</span>
+                </li>
+                <li>
+                        <span class="material-icons">
+                            email
+                        </span>
+                    <span class="text">602533622@qq.com</span>
+                </li>
+                <li>
+                        <span class="material-icons">
+                            language
+                        </span>
+                    <span class="text" id="province">[[${location.province}]]</span>
+                    <span class="text" id="city">[[${location.city}]]</span>
+                </li>
+                <li>
+                    <span class="text">天气状况：</span>
+                    <span class="text" id="weather"></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="contactInfo education">
+            <h3 class="title">教育经历</h3>
+            <ul>
+                <li>
+                    <h5>2020-</h5>
+                    <h4>中南大学</h4>
+                    <span class="text">信息安全专业本科</span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="contactInfo language">
+            <h3 class="title">语言</h3>
+            <ul>
+                <li><span class="text">CET4:562/710</span></li>
+                <li> <span class="percent">
+                            <div style="width:calc(562/710*100%)"></div>
+
+                        </span></li>
+
+                <li><span class="text">CET6:525/710</span></li>
+                <li> <span class="percent">
+                            <div style="width:calc(525/710*100%)"></div>
+
+                        </span></li>
+            </ul>
+
+        </div>
+
+        <div class="contactInfo option">
+            <h3 class="title">管理选项</h3>
+            <form action="http://192.168.37.131:8081/user/login/location/editCity" method="get">
+                <input type="submit" value="编辑城市资料">
+            </form>
+
+            <form action="http://192.168.37.131:8081/user/login/exp/editExp" method="get">
+                <input type="submit" value="编辑在校经历">
+            </form>
+
+            <form action="http://192.168.37.131:8081/user/login/user/updateImg" method="get">
+                <input type="submit" value="更换个人头像">
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="rightSide">
+        <div class="about">
+            <h2 class="title2">个人介绍</h2>
+            <p>杨凯楠，男，生于2001年5月16日，自我出生之日给国足带来百年未有之大变局使其在2002年打入世界杯后，本人再也没有能力给予中国队希望。
+                <br><br>你说职能部门，一届一届换了多少足球协会主席了，改过吗?换汤不换药。
+                人家卡马乔也有理由说，我带的是什么队，我带的是西班牙队，现在这批人是什么人啊，你们叫我带。
+                中国足球现在什么水平，就这么几个人，你李铁什么的都在当教练，他能当吗？当不了！
+                没这个能力知道吗？再下去要输越南了，泰国队输完输越南，再输缅甸，接下来没人输了。
+                人家里皮带的蛮好的你把他去换了干什么你告诉我。大年初二你在越南输个1:3,你倒告诉我怎么解释？脸都不要了。
+            </p>
+        </div>
+
+        <div class="about">
+            <h2 class="title2">在校经历</h2>
+
+            <div class="box" th:each="experience : ${experiences}">
+                <div class="year-company">
+                    <h5>[[${experience.time}]]</h5>
+
+                </div>
+
+                <div class="text">
+                    <h4>[[${experience.content}]]</h4>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="about skills">
+            <h2 class="title2">专业技能</h2>
+            <div class="box">
+                <h4>HTML</h4>
+                <div class="percent">
+                    <div style="width:95%"></div>
+                </div>
+
+            </div>
+
+            <div class="box">
+                <h4>CSS</h4>
+                <div class="percent">
+                    <div style="width:88%"></div>
+                </div>
+
+            </div>
+
+            <div class="box">
+                <h4>JavaScript</h4>
+                <div class="percent">
+                    <div style="width:95%"></div>
+                </div>
+
+            </div>
+
+            <div class="box">
+                <h4>Java</h4>
+                <div class="percent">
+                    <div style="width:90%"></div>
+                </div>
+
+            </div>
+
+            <div class="box">
+                <h4>C++</h4>
+                <div class="percent">
+                    <div style="width:80%"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="about interest">
+            <h2 class="title2">兴趣爱好</h2>
+            <ul>
+                <li>
+                        <span class="material-icons" style="vertical-align:-6px;">
+                            sports_soccer
+                        </span>
+                    足球
+                </li>
+                <li>
+                        <span class="material-icons" style="vertical-align:-6px;">
+                            code
+                        </span>
+                    编程
+                </li>
+                <li>
+                        <span class="material-icons" style="vertical-align:-6px;">
+                            nightlife
+                        </span>
+                    京剧
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    window._AMapSecurityConfig = {
+        securityJsCode: '651ca9d486de735618ede16fcdc90b55',
+    }
+</script>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=8f9e7837a7ce2ab1165842e6cd560d4b"></script>
+<script type="text/javascript">
+    //加载天气查询插件
+    AMap.plugin('AMap.Weather', function () {
+        //创建天气查询实例
+        var weather = new AMap.Weather();
+
+        var city = document.getElementById("city")
+        //执行实时天气信息查询
+        weather.getLive(city.textContent, function (err, data) {
+            console.log(err, data);
+            if (!err) {
+                var str = [];
+                str.push('<p class="text">天气：' + data.weather + '</p>');
+                str.push('<p class="text">温度：' + data.temperature + '℃ </p>');
+                str.push('<p class="text">风向：' + data.windDirection + '</p>');
+                str.push('<p class="text">风力：' + data.windPower + ' 级</p>');
+                str.push('<p class="text">空气湿度：' + data.humidity + '</p>');
+                document.getElementById("weather").innerHTML = str.join('');
+            }
+        });
+    });
+</script>

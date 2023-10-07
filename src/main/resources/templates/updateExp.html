@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>修改经历</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+<div class="main">
+    <h1>修改经历</h1>
+    <br>
+    <form action="http://192.168.37.131:8081/exp/update" method="post">
+        <input type="hidden" name="id" th:field="${experience.id}">
+        <p>时间<input name="time" th:field="${experience.time}"><br></p>
+        <p>内容<input name="content" th:field="${experience.content}"><br></p>
+        <input type="submit" value="修改">
+    </form>
+</div>
+</body>
+</html>

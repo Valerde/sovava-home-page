@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>编辑地址</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+<div class="main">
+    <h1>编辑地址</h1>
+
+    <form action="http://192.168.37.131:8081/location/update" method="post">
+        <input type="hidden" name="id" th:field="${location.id}">
+        <p>省份<input name="province" th:field="${location.province}"><br></p>
+        <p>城市<input name="city" th:field="${location.city}"><br></p>
+        <input type="submit" value="修改">
+    </form>
+</div>
+</body>
+</html>

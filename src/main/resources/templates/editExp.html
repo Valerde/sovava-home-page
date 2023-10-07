@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑经历</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+<div class="exp">
+    <h1>编辑经历</h1>
+    <input type="button" value="新增" id="add"><br><br>
+    <hr>
+    <table border="1" cellspacing="0" width="800">
+        <tr>
+            <th>时间</th>
+            <th>内容</th>
+            <th>管理选项</th>
+        </tr>
+        <div th:each="experience :${experiences}">
+            <tr align="center">
+                <td id="time">[[${experience.time}]]</td>
+                <td id="content">[[${experience.content}]]</td>
+                <td><a th:href="@{'http://192.168.37.131:8081/exp/updateExp?id='+${experience.id}}">修改</a>
+                    <a th:href="@{'http://192.168.37.131:8081/exp/deleteExp?id='+${experience.id}}">删除</a></td>
+            </tr>
+        </div>
+    </table>
+    <br>
+    <a href="http://192.168.37.131:8081/page/">确认</a>
+</div>
+<script>
+    document.getElementById("add").onclick = function () {
+        location.href = "http://192.168.37.131:8081/exp/addExp";
+    }
+</script>
+</body>
+</html>

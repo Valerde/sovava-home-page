@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+
+<form class="box" action="http://192.168.37.131:8081/user/login" method="post">
+    <input type="hidden" name="path1" th:value="${path1}">
+    <input type="hidden" name="path2" th:value="${path2}">
+
+    <h1>Login</h1>
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="password">
+<!--    <input type="submit" name="" value="Login">-->
+
+<!--    <p>用户名<input name="username"><br></p>-->
+<!--    <p>密码<input type="password" name="password"><br></p>-->
+    <input type="submit" value="登录">
+</form>
+</body>
+</html>
